@@ -34,11 +34,17 @@
         <!-- Nueva ronda -->
         <button
             v-if="gameStatus !== GameStatus.Playing"
-            class="mt-4 bg-blue-500 text-white rounded-lg px-4 py-2 cursor-pointer hover:bg-blue-600 transition-all"
+            class="mt-4 bg-pink-500 text-white font-bold rounded-full px-6 py-2 shadow-lg cursor-pointer hover:bg-pink-600 hover:scale-105 transition-all"
             @click="getNextOptions()"
         >
             Jugar de nuevo
         </button>
+
+         <!-- Contador (esquina inferior izquierda) -->
+        <div class="fixed bottom-4 left-4 bg-white/80 border-2 border-pink-300 shadow-lg rounded-2xl px-4 py-2 text-left">
+            <p class="text-green-600 font-bold">Ganadas: {{ wins }}</p>
+            <p class="text-red-600 font-bold">Perdidas: {{ losses }}</p>
+        </div>
     </section>
 </template>
 
@@ -47,6 +53,7 @@ import PokemonOptions from '@/components/PokemonOptions.vue'
 import PokemonPicture from '../components/PokemonPicture.vue'
 import { GameStatus } from '../interfaces'
 import { usePokemonGame } from '../composables/usePokemonGame.ts'
+import { useCount } from '../composables/useCount.ts'
 import confetti from 'canvas-confetti'
 import { watch } from 'vue'
 
@@ -65,6 +72,8 @@ watch(gameStatus,(status)=>{
         confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } })
     }
 })
+
+const { wins, losses } = useCount(gameStatus)
 </script>
 
 <style scope>

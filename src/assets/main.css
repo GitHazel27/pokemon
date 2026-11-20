@@ -4,7 +4,22 @@
 
 html,
 body {
-    background-color: #f1f1f1;
+    background: linear-gradient(135deg, #ffe4f1 0%, #ffd1e8 45%, #e9d5ff 100%);
+    background-attachment: fixed;
+    font-family: 'Quicksand', 'Segoe UI', sans-serif;
+    color: #831843;
+}
+
+/* Tipografía y título con degradado */
+.font-girly {
+    font-family: 'Pacifico', cursive;
+}
+
+.title-girly {
+    background: linear-gradient(90deg, #ec4899, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 #app {
